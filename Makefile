@@ -15,6 +15,8 @@ CC_FLAGS = -Wall -Werror -Wextra -g
 .c.o :
 	@echo "Compiling: $<"
 	@$(CC) $(CC_FLAGS) -c $< -o $@
+	
+all: $(SERVER) $(CLIENT)
 
 $(SERVER): $(OBJS)
 	@echo "Minitalk Done !\n"
@@ -25,7 +27,6 @@ $(CLIENT): $(OBJS)
 	@$(MAKE) -C libft
 	@$(CC) $(CC_FLAGS) client.o libft/libft.a -o $(CLIENT)
 
-all: $(SERVER) $(CLIENT)
 
 clean:
 	@$(MAKE) -C libft clean
